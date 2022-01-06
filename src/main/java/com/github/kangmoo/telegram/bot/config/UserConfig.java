@@ -1,4 +1,3 @@
-
 package com.github.kangmoo.telegram.bot.config;
 
 import lombok.Getter;

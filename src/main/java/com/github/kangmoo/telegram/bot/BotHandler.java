@@ -26,7 +26,7 @@ public class BotHandler extends TelegramLongPollingBot {
     public static String getMyIp() {
         StringBuilder sb = new StringBuilder();
         if (userConfig.getSshAddr() != null) sb.append("SSH_ADDR\n").append(userConfig.getSshAddr()).append("\n");
-        if (userConfig.getFtpAddr() != null) sb.append("FTP_ADDR\n").append(userConfig.getFtpAddr()).append("\n");
+        if (userConfig.getFileBrowserAddr() != null) sb.append("FILE_SERVER_ADDR\n").append(userConfig.getFileBrowserAddr()).append("\n");
         return sb.toString();
     }
 

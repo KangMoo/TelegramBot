@@ -37,11 +37,11 @@ public class IpChecker extends IntervalTaskUnit {
             String myIp = getMyIp();
             if (myIp == null) {
                 userConfig.setSshAddr(null);
-                userConfig.setFtpAddr(null);
+                userConfig.setFileBrowserAddr(null);
                 return;
             }
             userConfig.setSshAddr(userConfig.getSshPort() > 1023 ? myIp + ":" + userConfig.getSshPort() : null);
-            userConfig.setFtpAddr(userConfig.getFtpPort() > 1023 ? myIp + ":" + userConfig.getFtpPort() : null);
+            userConfig.setFileBrowserAddr(userConfig.getFileBrowserPort() > 1023 ? myIp + ":" + userConfig.getFileBrowserPort() : null);
         } catch (Exception e) {
             logger.warn("Err Occurs. [{}]", this.getClass().getSimpleName(), e);
         }

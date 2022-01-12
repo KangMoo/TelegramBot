@@ -40,7 +40,6 @@ public class Service {
             stopService();
         }));
         new IpChecker(0).run();
-        new Thread(() -> new FileBrowser().start(userConfig.getFileBrowserPort(), userConfig.getWwwHome())).start();
         try {
             TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
             api.registerBot(new BotHandler());

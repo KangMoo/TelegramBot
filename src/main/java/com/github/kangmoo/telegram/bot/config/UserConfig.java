@@ -18,7 +18,7 @@ public class UserConfig extends DefaultConfig {
     private static final String SECTION_BOT = "BOT";
     private static final String SECTION_ADDR_INFO = "ADDR_INFO";
     private static final String SECTION_ADMIN = "ADMIN";
-    private static final String SECTION_FILE_BROWSER = "FILE_BROWSER";
+    private static final String SECTION_FILE_SERVER = "FILE_SERVER";
 
     private static final String FIELD_TOKEN = "TOKEN";
     private static final String FIELD_IP_CHECK_URL = "IP_CHECK_URL";
@@ -31,10 +31,9 @@ public class UserConfig extends DefaultConfig {
     private int sshPort;
     private long adminId;
     private int fileBrowserPort;
-    private String wwwHome;
 
     private String sshAddr;
-    private String fileBrowserAddr;
+    private String fileServerAddr;
 
     public UserConfig(String fileName) {
         super(fileName);
@@ -59,7 +58,6 @@ public class UserConfig extends DefaultConfig {
 
         adminId = Long.parseLong(getStrValue(SECTION_ADMIN, FIELD_ADMIN_ID, null));
 
-        fileBrowserPort = getIntValue(SECTION_FILE_BROWSER, FIELD_PORT, -1);
-        wwwHome = getStrValue(SECTION_FILE_BROWSER, FIELD_WWW_HOME, null);
+        fileBrowserPort = getIntValue(SECTION_FILE_SERVER, FIELD_PORT, -1);
     }
 }

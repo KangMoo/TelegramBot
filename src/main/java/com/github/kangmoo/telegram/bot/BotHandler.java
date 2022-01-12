@@ -23,10 +23,12 @@ public class BotHandler extends TelegramLongPollingBot {
         authorizedUsers.add(userConfig.getAdminId());
     }
 
-    public static String getMyIp() {
+    public static String getMyIp(Update update) {
         StringBuilder sb = new StringBuilder();
-        if (userConfig.getSshAddr() != null) sb.append("SSH_ADDR\n").append(userConfig.getSshAddr()).append("\n");
-        if (userConfig.getFileBrowserAddr() != null) sb.append("FILE_SERVER_ADDR\n").append(userConfig.getFileBrowserAddr()).append("\n");
+        if (userConfig.getSshAddr() != null && authorizedUsers.contains(update.getMessage().getFrom().getId()))
+            sb.append("SSH_ADDR\n").append(userConfig.getSshAddr()).append("\n");
+        if (userConfig.getFileServerAddr() != null)
+            sb.append("FILE_SERVER_ADDR\n").append(userConfig.getFileServerAddr()).append("\n");
         return sb.toString();
     }
 
@@ -40,7 +42,7 @@ public class BotHandler extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             SendMessage sendMessage = new SendMessage();
             sendMessage.setChatId(update.getMessage().getChatId().toString());
-            sendMessage.setText(getMyIp());
+            sendMessage.setText(getMyIp(update));
             try {
                 execute(sendMessage);
             } catch (Exception e) {
